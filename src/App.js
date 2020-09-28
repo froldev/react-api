@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import Header from './components/Header';
-import Form from './components/Form'
+import Characters from './components/Characters'
+import Header from './components/Header'
 
 import './App.css';
 
@@ -10,10 +10,10 @@ class App extends Component {
 		return (
 			<div className='App'>
 				<Header />
-        <Form />
+        <Characters />
 			</div>
 		);
 	}
 }
 
-export default App;
+export default App

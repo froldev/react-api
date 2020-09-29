@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios"
 
 import DisplayCharacter from "./DisplayCharacter";
 import "./Characters.css";
@@ -10,9 +11,9 @@ class Characters extends Component {
   };
 
   getCharacters = () => {
-    fetch("https://akabab.github.io/starwars-api/api/all.json")
-      .then((res) => res.json())
-      .then((res) => this.setState({ characters: res, isLoaded: true }));
+    axios
+    .get("https://akabab.github.io/starwars-api/api/all.json")
+    .then(res => this.setState({ characters: res.data, isLoaded: true }));
   };
 
   componentDidMount() {

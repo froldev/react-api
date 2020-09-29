@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
 
 import DisplayCharacter from "./DisplayCharacter";
 import "./Characters.css";
@@ -10,10 +10,11 @@ class Characters extends Component {
     isLoaded: false,
   };
 
-  getCharacters = () => {
-    axios
-    .get("https://akabab.github.io/starwars-api/api/all.json")
-    .then(res => this.setState({ characters: res.data, isLoaded: true }));
+  getCharacters = async () => {
+    const result = await axios.get(
+      "https://akabab.github.io/starwars-api/api/all.json"
+    );
+    this.setState({ characters: result.data, isLoaded: true });
   };
 
   componentDidMount() {
@@ -21,7 +22,7 @@ class Characters extends Component {
   }
 
   render() {
-    const { characters, isLoaded } = this.state
+    const { characters, isLoaded } = this.state;
     return (
       <>
         {!isLoaded ? (
@@ -30,7 +31,7 @@ class Characters extends Component {
           <div>
             <h1>Characters :</h1>
             <div>
-              { characters.map((character) => (
+              {characters.map((character) => (
                 <DisplayCharacter character={character} key={character.id} />
               ))}
             </div>
